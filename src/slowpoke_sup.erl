@@ -10,6 +10,6 @@ init([]) ->
 	Procs = [
 		{mechanic_engine_server, {mechanic_engine_server, start_link,[bob]}, permanent, 60000, worker, [mechanic_engine_server]},
 		{physical_engine_server, {physical_engine_server, start_link,[bob]}, permanent, 60000, worker, [physical_engine_server]},
-		{entities_sup, {entities_sup, start_link,[]}, permanent, 60000, supervisor, [entities_sup]}
+		{entities_sup, {entities_sup, start_link,[]}, permanent, infinity, supervisor, [entities_sup]}
 	],
-	{ok, {{one_for_one, 1, 5}, Procs}}.
+	{ok, {{one_for_one, 10, 1}, Procs}}.

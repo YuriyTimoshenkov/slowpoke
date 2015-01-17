@@ -11,4 +11,4 @@ init([]) ->
 	Procs = [
 	{npc_square, {npc_square, start_link,[bob]}, permanent, 60000, worker, [npc_square]}
 	],
-	{ok, {{one_for_one, 1, 5}, Procs}}.
+	{ok, {{one_for_one, 10, 1}, Procs}}.
