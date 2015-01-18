@@ -9,6 +9,6 @@ start_link() ->
 
 init([]) ->
 	Procs = [
-	{npc_square, {npc_square, start_link,[bob]}, permanent, 60000, worker, [npc_square]}
+	{npc_square, {npc_square, start_link,[{{20,10},{-1,-1}}]}, permanent, 60000, worker, [npc_square]}
 	],
 	{ok, {{one_for_one, 10, 1}, Procs}}.

@@ -9,7 +9,7 @@ start_link(Configuration) ->
   gen_server:start_link({local, mechanic_engine_server}, mechanic_engine_server,Configuration,[]).
 
 init(Configuration) ->
-  {ok,{[],Configuration}}.
+  {ok,{Configuration}}.
 
 
 handle_call(get_state, _From, State) ->
@@ -20,8 +20,8 @@ handle_info({'DOWN', _, process, _Pid, _}, State) ->
     {noreply, State}.
 
 
-handle_cast({process_action, move, EntityRef, Vector}, State) ->
-  gen_server:cast(physical_engine_server, {process_action, move, EntityRef, Vector}),
+handle_cast({process_action, move, EntityRef, Position, Vector}, State) ->
+  gen_server:cast(physical_engine_server, {process_action, move, EntityRef, Position, Vector}),
   {noreply, State}.
 
 code_change(_,_,_) -> ok.

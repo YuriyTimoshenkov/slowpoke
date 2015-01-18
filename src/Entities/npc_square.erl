@@ -11,21 +11,21 @@ start_link(Configuration) ->
 
 init(Configuration) ->
   erlang:send_after(?INTERVAL, self(), trigger_move_timer),
-  {ok,{[],Configuration}}.
+  {ok,Configuration}.
 
 
-handle_call({change_position, NewPosition}, _From, _) ->
+handle_call({change_position, NewPosition, NewVector}, _From, _) ->
   io:fwrite("Position changed to: ~p ~n",[NewPosition]),
-  {reply, ok, NewPosition}.
+  {reply, ok, {NewPosition,NewVector}}.
 
 
 handle_info({'DOWN', _, process, _Pid, _}, State) ->
     {noreply, State};
 
-handle_info(trigger_move_timer, State) ->
-   gen_server:cast(mechanic_engine_server, {process_action, move, self(), {1,1}}),
+handle_info(trigger_move_timer, {Position, Vector}) ->
+   gen_server:cast(mechanic_engine_server, {process_action, move, self(), Position, Vector}),
    erlang:send_after(?INTERVAL, self(), trigger_move_timer),
-   {noreply, State}.
+   {noreply, {Position, Vector}}.
 
 
 handle_cast({move, entityRef, vector}, State) ->
