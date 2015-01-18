@@ -10,4 +10,4 @@ rel/example_project
 .rebar
 .idea
 .erlang.mk.packages.v2
-
+_rel
