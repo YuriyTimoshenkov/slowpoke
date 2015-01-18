@@ -7,7 +7,7 @@
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2, code_change/3, terminate/2]).
 
 start_link(Configuration) ->
-  gen_server:start_link({local, npc_square}, npc_square,Configuration,[]).
+  gen_server:start_link(npc_square,Configuration,[]).
 
 init(Configuration) ->
   erlang:send_after(?INTERVAL, self(), trigger_move_timer),
@@ -16,7 +16,10 @@ init(Configuration) ->
 
 handle_call({change_position, NewPosition, NewVector}, _From, _) ->
   io:fwrite("Position changed to: ~p ~n",[NewPosition]),
-  {reply, ok, {NewPosition,NewVector}}.
+  {reply, ok, {NewPosition,NewVector}};
+
+handle_call(get_position, _From, State) ->
+  {reply, State, State}.
 
 
 handle_info({'DOWN', _, process, _Pid, _}, State) ->
