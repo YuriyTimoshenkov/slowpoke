@@ -9,4 +9,6 @@
   - physical engine (objects movement, collision detection, etc ...)
   - map (world location processing, physical engine calculation optimization, etc ...)
   - client session manager (client authorization, action requests processing and world state retrieving, etc ...)
-- simple MMO 2d top down game built using Slowpoke
+- simple MMO 2d top down game built using Slowpoke engine
+- python client
+- web client
