@@ -1,6 +1,6 @@
 ## Slowpoke - MMO game server engine
 
-![Logo] (https://lh5.googleusercontent.com/JRP4zgnSKiUbz2ks8qOmFreIk9vboJGb2oxiet5wgfarvcodDssyD-aK1Z01lGQGdr7iya3gDV8=w1345-h543)
+![Logo] (http://media.tumblr.com/224985f9fa1ad61ff67cdee8e1457c14/tumblr_inline_nkatvak4vA1t8c0ku.jpg)
 
 ###Project goals
 - common MMO game server engine, that could be used to build on top of it MMO like games 
